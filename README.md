@@ -124,7 +124,7 @@ func main() {
 </details>
 <br>
 
-####**Receive**
+#### **Receive**
 
 > Receive från en kanal blockerar tills något skickas 
 > till kanalen. Exemplet nedan gäller även om kanalen
@@ -225,7 +225,7 @@ utkommenterad. Varför blir det som det blir?
 > 
 > Kodskelettet hittar du i filen `threadPoolTask.go` i github-repot.
 
-####**STEG 1**
+### **STEG 1**
 >Skapa 3 struct.\
 > Struct 1: Heter user och har variablerna name och id (båda strings).\
 > struct 2: Heter request och har variablerna sqlQuery och id. (båda strings).\
@@ -256,7 +256,7 @@ type result struct {
 </details>
 <br>
 
-####**STEG 2**
+### **STEG 2**
 
 >Skapa en array (obs inte slice) av storlek `numOfDBUsers` som heter users och tar
 > element av typer user.
@@ -273,7 +273,7 @@ var users [numOfDbUsers]user
 </details>
 <br>
 
-####**STEG 3**
+### **STEG 3**
 >Skapa två buffrade kanaler.\
 > Kanal 1: Heter requestsCh och tar data av typen request. Kapacitet ska vara 10 element.\
 > Kanal 2: Heter resultsCh och tar data av typen result. Kapacitet ska vara 10 element.\
@@ -292,7 +292,7 @@ var resultsCh = make(chan result, 10)
 </details>
 <br>
 
-####**STEG 4**
+### **STEG 4**
 > Implementera funktionen `getUserFromDB(id string) user`.\
 > Funktionen får in ett unikt id och ska se om id:et
 > finns i DB:en, det vill säga i array:en `user`.\
@@ -321,7 +321,7 @@ func getUserFromDB(id string) user {
 </details>
 <br>
 
-####**STEG 5**
+### **STEG 5**
 > Fyll i den rad som saknas i funktionen `requestFactory`.\
 > Funktionen skapar requests och skickar dessa till requestsCh.
 
@@ -347,7 +347,7 @@ func requestFactory(numOfRequests int) {
 </details>
 <br>
 
-####**STEG 6**
+### **STEG 6**
 > Skriv färdigt funktionen `taskExecutor`.\
 > Funktionen representerar arbetet som varje individuell Goroutine/Worker/Tråd utför.\
 > Funktionen tar emot requests från requestsCh och hämtar den user som är kopplad\
@@ -372,7 +372,7 @@ func taskExecutor(wg *sync.WaitGroup) {
 </details>
 <br>
 
-####**STEG 7**
+### **STEG 7**
 > Funktionen `resultReceiver` är det sista steget i vår Thread Pool.\
 > Funktionen tar emot resultaten och skriver ut 3 variabler.
 > Fyll i det som saknas.
@@ -395,7 +395,7 @@ func resultReceiver(done chan<- bool) {
 </details>
 <br>
 
-####**STEG 8**
+### **STEG 8**
 > Slutligen behöver vi en funktion som startar våra workers/Goroutiner/trådar.\
 > Detta görs i funktionen `createThreadPool`
 > Funktionen ska anropa funktionen `taskExecutor` som n=numOfWorkers antal Goroutiner.
