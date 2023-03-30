@@ -258,8 +258,8 @@ type result struct {
 
 ### **STEG 2**
 
->Skapa en array (obs inte slice) av storlek `numOfDBUsers` som heter users och tar
-> element av typer user.
+>Skapa en array (obs inte slice) av storlek `numOfDBUsers` som heter `users` och tar
+> element av typen `user`.
 
 <details>
 <summary>Kontroll</summary>
@@ -275,8 +275,8 @@ var users [numOfDbUsers]user
 
 ### **STEG 3**
 >Skapa två buffrade kanaler.\
-> Kanal 1: Heter requestsCh och tar data av typen request. Kapacitet ska vara 10 element.\
-> Kanal 2: Heter resultsCh och tar data av typen result. Kapacitet ska vara 10 element.\
+> Kanal 1: Heter `requestsCh` och tar data av typen `request`. Kapacitet ska vara 10 element.\
+> Kanal 2: Heter `resultsCh` och tar data av typen `result`. Kapacitet ska vara 10 element.\
 > Notera att kanalerna är globala, vilket betyder att de kan nås av alla funktioner utan att behöva tas in som argument.
 
 <details>
@@ -294,10 +294,10 @@ var resultsCh = make(chan result, 10)
 
 ### **STEG 4**
 > Implementera funktionen `getUserFromDB(id string) user`.\
-> Funktionen får in ett unikt id och ska se om id:et
+> Funktionen får in ett unikt `id` och ska se om id:et
 > finns i DB:en, det vill säga i array:en `user`.\
-> Om ID:et hittas i DB:en så ska funktionen returna user:n med detta id.\
-> Om ingen user med det givna id:et hittas ska en tom user returnas.
+> Om ID:et hittas i DB:en så ska funktionen returna den `user` med detta id.\
+> Om ingen user med det givna id:et hittas ska en tom `user` returnas.
 
 <details>
 <summary>Kontroll</summary>
@@ -420,6 +420,6 @@ func createThreadPool(numOfWorkers int) {
 <br>
 
 > Nu är vår Thread Pool färdig. Bra jobbat! Testa att köra programmet\
-> med olika antal workers/goroutiner och att
+> med olika antal workers/goroutiner och kolla att
 > programmet faktiskt hanterar DB-requests snabbare!
 
