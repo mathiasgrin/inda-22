@@ -227,9 +227,9 @@ utkommenterad. Varför blir det som det blir?
 
 ### **STEG 1**
 >Skapa 3 struct.\
-> Struct 1: Heter user och har variablerna name och id (båda strings).\
-> struct 2: Heter request och har variablerna sqlQuery och id. (båda strings).\
-> struct 3: Heter result och har variabeln request av typen request och name av typen string.
+> Struct 1: Heter `user` och har variablerna `name` och `id` (båda `string`).\
+> struct 2: Heter `request` och har variablerna `sqlQuery` och `id`. (båda `string`).\
+> struct 3: Heter `result` och har variabeln `request` av typen `request` och `name` av typen `string`.
 > 
 
 <details>
