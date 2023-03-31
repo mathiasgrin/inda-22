@@ -110,7 +110,7 @@ func main() {
         for v := range bufferedCh {
             // Gör något med v
         }
-	}()
+    }()
 
     // Kan skicka trots att receiver inte är redo
     bufferedCh <- 1
@@ -120,7 +120,9 @@ func main() {
     bufferedCh <- 3
     // mer kod ...
 }
+
 ```
+
 </details>
 <br>
 
@@ -140,9 +142,9 @@ func main() {
     ch := make(chan int)
 		
     go func() {
-         time.Sleep(5 * time.Second)
+        time.Sleep(5 * time.Second)
         ch <- 1
-	}()
+    }()
 
     // Blockerar i 5 sek
     <- ch
@@ -170,7 +172,7 @@ func main() {
         }
         fmt.Printf("All %d numbers sent!\n", iterations)
         close(ch) // Close the channel when done sending.
-	}()
+    }()
 
     time.Sleep(3 * time.Second) // Give the goroutine time to run.
 
@@ -210,9 +212,9 @@ utkommenterad. Varför blir det som det blir?
 >Om vi inte stänger kanalen
 >så kommer `for chVal := range ch` att fortsätta vänta
 >på att hämta data från kanalen. Dock finns ingen
->goroutine som längre skriver data till kanalen 
+>goroutine som längre skriver till kanalen 
 >(vår anonyma sender-goroutine har ju kört färdigt efter sin
->3:e iteration). Vi får således Deadlock.
+>3:e iteration). Därför får vi Deadlock.
 </details>
 <br>
 
@@ -295,8 +297,8 @@ var resultsCh = make(chan result, 10)
 ### **STEG 4**
 > Implementera funktionen `getUserFromDB(id string) user`.\
 > Funktionen får in ett unikt `id` och ska se om id:et
-> finns i DB:en, det vill säga i array:en `user`.\
-> Om ID:et hittas i DB:en så ska funktionen returna den `user` med detta id.\
+> finns i DB:en, det vill säga i vår array `user`.\
+> Om ID:et hittas i DB:en så ska funktionen returna den `user` som har detta id.\
 > Om ingen user med det givna id:et hittas ska en tom `user` returnas.
 
 <details>
@@ -419,7 +421,8 @@ func createThreadPool(numOfWorkers int) {
 </details>
 <br>
 
-> Nu är vår Thread Pool färdig. Bra jobbat! Testa att köra programmet\
-> med olika antal workers/goroutiner och kolla att
+> Nu är vår Thread Pool färdig. Bra jobbat! Titta igenom\
+> main-funktionen för att se hur programmet körs.\
+> Testa att köra programmet med olika antal workers/goroutiner och kolla att\
 > programmet faktiskt hanterar DB-requests snabbare!
 
