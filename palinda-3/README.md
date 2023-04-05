@@ -8,7 +8,7 @@ Mathias Grindsäter (grin@kth.se)
 
 #### 💬**Veckans task**
 
-Diskutera först i grupper av två eller tre i 15 minuter:
+Diskutera först i grupper av två eller tre i 20 minuter:
 * Gå igenom uppgifterna.
 * Vad gjorde ni lika/olika, vad var svårt?
 * Bestäm själva i gruppen hur ni vill dela upp vem som presenterar vad.
@@ -64,18 +64,18 @@ func main() {
 </details>
 <br>
 
->Vi ska nu implementera programmet med hjälp av en Mutex.
 > Vi deklarerar en Mutex precis som en WorkGroup:
 >```go
 >var mtx sync.Mutex
 >```
 >Vi är främst intresserade av två funktioner, vilka låser och låser upp
-> en variabel för andra trådar.
+> en variabel.
 > ```go
 > mtx.Lock()
 > // Mellan har vi det vi vill låsa.
 > mtx.Unlock()
 >```
+>Implementera nu programmet med hjälp av en Mutex.
 
 <details>
 <summary>Facit</summary>
@@ -112,6 +112,35 @@ func main() {
 
 >Kontemplera i par: Vad tror ni är mest effektivt, denna lösning eller 
 >en sekventiell implementation?
+
+<details>
+<summary>OBS! En elegant lösning med en kanal</summary>
+<br>
+
+```go
+func incrementBalance(s *bankAccount, wg *sync.WaitGroup, blocked chan bool) {
+	blocked <- true
+	(*s).balance = (*s).balance - 1
+	<-blocked
+	wg.Done()
+}
+
+func main() {
+	numOfGoroutines := 1000
+	myAccount := bankAccount{"Handelsbanken", 1000}
+	var w sync.WaitGroup
+	blockingCh := make(chan bool, 1)
+	for i := 0; i < numOfGoroutines; i++ {
+		w.Add(1)
+		go incrementBalance(&myAccount, &w, blockingCh)
+	}
+	w.Wait()
+	fmt.Println(myAccount.balance)
+
+}
+```
+</details>
+<br>
 
 ### **Git**
 [Git Bootcamp](https://github.com/eeegl/inda22/blob/main/palinda-3/git-tutorial.md)
