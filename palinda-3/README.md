@@ -145,7 +145,7 @@ func main() {
 <br>
 
 ### **Git**
-[Git Bootcamp](https://github.com/eeegl/inda22/blob/main/palinda-3/git-tutorial.md)
+[Git Bootcamp](https://github.com/eeegl/inda22-uppgifter/tree/main/palinda-3)
 
 
 
