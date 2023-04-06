@@ -17,10 +17,8 @@ func incrementBalance(s *bankAccount, wg *sync.WaitGroup) {
 }
 
 /*
-* For each Goroutine we want to increment the car's
-* mileage by 1.
-* In total, we want the mileage to be set to 2000,
-* however, something is wrong...
+* For each Goroutine we want to decrement the balance
+* by 1.
  */
 func main() {
 	numOfGoroutines := 1000

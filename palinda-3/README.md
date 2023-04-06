@@ -110,7 +110,8 @@ func main() {
 </details>
 <br>
 
->Kontemplera i par: Vad tror ni är mest effektivt, denna lösning eller 
+>Kör programmet några gånger och se att det verkligen funkar.
+>Kontemplera sedan i par: Vad tror ni är mest effektivt, denna lösning eller 
 >en sekventiell implementation?
 
 <details>
@@ -118,10 +119,10 @@ func main() {
 <br>
 
 ```go
-func incrementBalance(s *bankAccount, wg *sync.WaitGroup, blocked chan bool) {
-	blocked <- true
+func incrementBalance(s *bankAccount, wg *sync.WaitGroup, blockingCh chan bool) {
+	blockingCh <- true
 	(*s).balance = (*s).balance - 1
-	<-blocked
+	<- blockingCh
 	wg.Done()
 }
 
