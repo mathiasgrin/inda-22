@@ -64,7 +64,8 @@ func main() {
 </details>
 <br>
 
-> Vi deklarerar en Mutex precis som en WorkGroup:
+> Låt oss nu använda en Mutex.
+> Vi deklarerar en Mutex likt en WorkGroup:
 >```go
 >var mtx sync.Mutex
 >```
