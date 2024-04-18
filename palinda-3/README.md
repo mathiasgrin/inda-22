@@ -21,6 +21,7 @@ Diskutera först i grupper av två eller tre i 20 minuter:
 > Öppna filen `mutexExerciseSkal.go` och fyll i det som saknas.\
 > Använd inget Mutex-objekt (än). Tanken är att minska
 > saldot från 1000 till 0 med 1000 gorutiner.
+> Lös uppgiften själv innan du trycker på `kontroll`.
 
 
 <details>
@@ -77,6 +78,7 @@ func main() {
 > mtx.Unlock()
 >```
 >Implementera nu programmet med hjälp av en Mutex.
+> Försök att lösa uppgiften innan du kollar `facit`.
 
 <details>
 <summary>Facit</summary>
@@ -115,8 +117,13 @@ func main() {
 >Kontemplera sedan i par: Vad tror ni är mest effektivt, denna lösning eller 
 >en sekventiell implementation?
 
+>Slutligen, i Go behöver vi i detta fall faktiskt inte använda
+> en mutex, utan vi kan istället lösa problemet med en kanal.
+> Implementera nu istället din lösning med en kanal.
+> Försök själv innan du tittar på lösningen nedan.
+
 <details>
-<summary>OBS! En elegant lösning med en kanal</summary>
+<summary>Lösning med en kanal.</summary>
 <br>
 
 ```go
